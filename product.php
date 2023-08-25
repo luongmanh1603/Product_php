@@ -10,7 +10,7 @@
             "name"=>"Ao ngan",
             "price"=>7,
             "descrip"=>"ngantay",
-            "qty"=>8
+            "qty"=>9
         ]
     ];
 ?>
