@@ -5,7 +5,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2>Add Product</h2>
+    <h2>Add Product1</h2>
     <form>
         <div class="mb-3">
             <label for="productName" class="form-label">Product Name</label>
