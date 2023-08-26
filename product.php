@@ -53,7 +53,7 @@ if ($result->num_rows > 0){
         <td><?php echo $item["qty"] ?></td>
         <td>
             <a href="edit.php?id=<?php echo $item["id"]?>" class="btn btn-warning">Update</a>
-            <a href="edit.php?id=<?php echo $item["id"]?>" class="btn btn-danger">Delete</a>
+            <a onclick="return confirm('chac chan muon xoa san pham: <?php echo $item["name"]?>')" href="delete.php?id=<?php echo $item["id"]?>" class="btn btn-danger">Delete</a>
 
         </td>
     </tr>
