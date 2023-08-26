@@ -1,18 +1,27 @@
 <?php
-    $list = [
-            [
-                    "name"=>"Ao dai",
-                    "price"=>10,
-                "descrip"=>"daitay",
-                "qty"=>5
-            ],
-        [
-            "name"=>"Ao ngan",
-            "price"=>7,
-            "descrip"=>"ngantay",
-            "qty"=>9
-        ]
-    ];
+   //get product from db
+   // connect db
+$host = "127.0.0.1";
+$dbname = "t2210a";
+$dbuser = "root";
+$dbpass = ""; // Xampp
+$conn = new  mysqli($host,$dbuser,$dbpass,$dbname);
+if ($conn->connect_error){
+    die("Connection refused");
+}
+
+// success
+//query db
+$spl = "select * from products";
+$result = $conn->query($spl);
+$product= [];
+if ($result->num_rows > 0){
+    while ($row = $result->fetch_assoc()){
+        $product[] = $row;
+    }
+}
+
+
 ?>
 
 <!doctype html>
@@ -21,10 +30,12 @@
     <?php include("head.php") ?>
 </head>
 <body>
-<a href="" class="btn btn-primary">Create a new product</a>
+<?php include("nav.php") ?>
+<a href="form.php" class="btn btn-primary">Create a new product</a>
 <table class="table">
     <thead>
     <tr>
+        <th scope="col">ID</th>
         <th scope="col">Product</th>
         <th scope="col">Price</th>
         <th scope="col">Description</th>
@@ -33,18 +44,20 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($list as $item) : ?>
+<?php foreach ($product as $item) : ?>
     <tr>
-        <td><?php echo $item["name"];?></td>
-        <td><?php echo $item["price"];?></td>
-        <td><?php echo $item["descrip"];?></td>
-        <td><?php echo $item["qty"];?></td>
+        <td><?php echo $item["id"] ?></td>
+        <td><?php echo $item["name"] ?></td>
+        <td><?php echo $item["price"] ?></td>
+        <td><?php echo $item["description"] ?></td>
+        <td><?php echo $item["qty"] ?></td>
         <td>
-            <button class="btn btn-primary">Update</button>
-            <button class="btn btn-danger">Delete</button>
+            <a href="edit.php?id=<?php echo $item["id"]?>" class="btn btn-warning">Update</a>
+            <a href="edit.php?id=<?php echo $item["id"]?>" class="btn btn-danger">Delete</a>
+
         </td>
     </tr>
-    <?php endforeach; ?>
+<?php endforeach; ?>
 
     </tbody>
 </table>
