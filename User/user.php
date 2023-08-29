@@ -36,7 +36,7 @@ if ($result->num_rows > 0){
         <th scope="col">Full Name</th>
         <th scope="col">Email</th>
         <th scope="col">Password</th>
-
+<th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -47,7 +47,7 @@ if ($result->num_rows > 0){
     <td><?php echo $item["email"] ?></td>
     <td><?php echo $item["pass"] ?></td>
     <td>
-
+        <a href="edit.php?id=<?php echo $item["id"]?>" class="btn btn-warning">Update</a>
         </td>
     </tr>
 <?php endforeach; ?>
